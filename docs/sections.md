@@ -193,5 +193,5 @@ Which gives for this paragraph:
 
 ## References
 
-1. <a name="citeref1"></a>AR6 Synthesis Report: Climate Change 2023 [Internet]. Sixth Assessment Report. Geneva, Confoederatio Helvetica: Intergovernmental Panel on Climate Change; Available from: https://www.ipcc.ch/report/ar6/syr/
+1. <a name="citeref1"></a>AR6 Synthesis Report: Climate Change 2023 [Internet]. Sixth Assessment Report. Geneva, 🇨🇭: Intergovernmental Panel on Climate Change; Available from: https://www.ipcc.ch/report/ar6/syr/
 
