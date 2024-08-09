@@ -4,12 +4,12 @@
 
 This book takes advantage of the semantic representation of the AR6 Synthesis Report
 [<a href="#citeref1">1</a>], part of the IPCC Sixth Assessment Report [<a href="#citeref2">2</a>].
-The wraps around a Wikibase at [kg-ipclimatec-reports.wikibase.cloud](https://kg-ipclimatec-reports.wikibase.cloud/).
+It wraps around a Wikibase at [kg-ipclimatec-reports.wikibase.cloud](https://kg-ipclimatec-reports.wikibase.cloud/).
 
 ## Confidence levels
 
-The report links statements to <a name="tp1">confidence levels</a>. These are, along with the number of
-statements with that level:
+The report links its statements to <a name="tp1">confidence levels</a>. The following query is for a list of confidence levels, 
+along with the number of statements with that level:
 
 **SPARQL** [sparql/confidenceLevels.rq](sparql/confidenceLevels.code.html) ([run](https://kg-ipclimatec-reports.wikibase.cloud/query/embed.html#PREFIX%20wdt%3A%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fdirect%2F%3E%0APREFIX%20wd%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fentity%2F%3E%0APREFIX%20p%3A%20%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2F%3E%0APREFIX%20pq%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fqualifier%2F%3E%0A%0ASELECT%20%3Fconfidence%20%3FconfidenceLabel%20%28COUNT%28DISTINCT%20%3Fstatement%29%20AS%20%3Fcount%29%20WHERE%20%7B%0A%20%20%3Fparagraph%20p%3AP3%20%3Fstatement%20.%0A%20%20%3Fstatement%20pq%3AP5%20%3Fconfidence%20.%0A%20%20FILTER%28contains%28str%28%3Fconfidence%29%2C%20%22https%22%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20GROUP%20BY%20%3Fconfidence%20%3FconfidenceLabel%0A), [edit](https://kg-ipclimatec-reports.wikibase.cloud/query/#PREFIX%20wdt%3A%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fdirect%2F%3E%0APREFIX%20wd%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fentity%2F%3E%0APREFIX%20p%3A%20%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2F%3E%0APREFIX%20pq%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fqualifier%2F%3E%0A%0ASELECT%20%3Fconfidence%20%3FconfidenceLabel%20%28COUNT%28DISTINCT%20%3Fstatement%29%20AS%20%3Fcount%29%20WHERE%20%7B%0A%20%20%3Fparagraph%20p%3AP3%20%3Fstatement%20.%0A%20%20%3Fstatement%20pq%3AP5%20%3Fconfidence%20.%0A%20%20FILTER%28contains%28str%28%3Fconfidence%29%2C%20%22https%22%29%29%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20GROUP%20BY%20%3Fconfidence%20%3FconfidenceLabel%0A))
 
@@ -26,7 +26,7 @@ SELECT ?confidence ?confidenceLabel (COUNT(DISTINCT ?statement) AS ?count) WHERE
 } GROUP BY ?confidence ?confidenceLabel
 ```
 
-With gives:
+Which gives:
 
 <table>
   <tr>
@@ -61,7 +61,7 @@ This knowledge graph has a number of types used to semantically model the data.
 
 ### Sections and Facts
 
-The AR6 Synthesis report is organized as a collections of [sections](https://kg-ipclimatec-reports.wikibase.cloud/wiki/Item:Q18) that consist of one or
+The AR6 Synthesis report is organized as a collection of [sections](https://kg-ipclimatec-reports.wikibase.cloud/wiki/Item:Q18) that consist of one or
 more paragraphs, where each paragraphs cites other parts of the IPCC reports. Each
 paragraph consists of facts, each with a confidence level (see above). This is explained more
 in the [next section](section.md).

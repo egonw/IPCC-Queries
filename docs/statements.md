@@ -27,7 +27,7 @@ SELECT ?specialScope ?specialScopeLabel (COUNT(DISTINCT ?statement) AS ?count) W
   ORDER BY DESC(?count)
 ```
 
-With gives:
+Which gives:
 
 <table>
   <tr>
@@ -94,7 +94,7 @@ With gives:
 
 ### Putting facts on the map
 
-With the following SPARQL query we can show facts on the world map,
+With the following SPARQL query, we can show IPCC statements on the world map,
 taking advantage of Wikidata [<a href="#citeref1">1</a>] to provide geographical coordinates for regions,
 using a <a name="tp3">federated SPARQL query</a>:
 
@@ -132,7 +132,7 @@ This should show something like this (pending a solution for a `'X-Frame-Options
   sandbox="allow-scripts allow-same-origin allow-popups" >
 </iframe>
 
-For now, this is what the results look like as table:
+For now, this is what the results look like as a table:
 
 <table>
   <tr>
@@ -235,7 +235,7 @@ Which gives:
 
 ## Chemicals
 
-The report also mentions <a name="tp4">chemicals</a> in multiple facts. We have these:
+The report also mentions <a name="tp4">chemicals</a> in multiple statements. We have these:
 
 **SPARQL** [sparql/chemicals.rq](sparql/chemicals.code.html) ([run](https://kg-ipclimatec-reports.wikibase.cloud/query/embed.html#PREFIX%20wdt%3A%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fdirect%2F%3E%0APREFIX%20wd%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fentity%2F%3E%0APREFIX%20p%3A%20%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2F%3E%0APREFIX%20pq%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fqualifier%2F%3E%0A%0ASELECT%20%3Fchemical%20%3FchemicalLabel%20%28COUNT%28DISTINCT%20%3Fstatement%29%20AS%20%3Fcount%29%20WHERE%20%7B%0A%20%20%3Fparagraph%20p%3AP3%20%3Fstatement%20.%0A%20%20%7B%20%3Fstatement%20pq%3AP12%20%3Fchemical%20%7D%0A%20%20UNION%0A%20%20%7B%20%3Fstatement%20pq%3AP19%20%3Fpressure%20.%20%3Fpressure%20p%3AP6%20%2F%20pq%3AP22%20%3Fchemical%20.%20%7D%0A%20%20%3Fchemical%20wdt%3AP1%20wd%3AQ68%20.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20GROUP%20BY%20%3Fchemical%20%3FchemicalLabel%0A%20%20ORDER%20BY%20DESC%28%3Fcount%29%0A), [edit](https://kg-ipclimatec-reports.wikibase.cloud/query/#PREFIX%20wdt%3A%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fdirect%2F%3E%0APREFIX%20wd%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fentity%2F%3E%0APREFIX%20p%3A%20%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2F%3E%0APREFIX%20pq%3A%20%20%3Chttps%3A%2F%2Fkg-ipclimatec-reports.wikibase.cloud%2Fprop%2Fqualifier%2F%3E%0A%0ASELECT%20%3Fchemical%20%3FchemicalLabel%20%28COUNT%28DISTINCT%20%3Fstatement%29%20AS%20%3Fcount%29%20WHERE%20%7B%0A%20%20%3Fparagraph%20p%3AP3%20%3Fstatement%20.%0A%20%20%7B%20%3Fstatement%20pq%3AP12%20%3Fchemical%20%7D%0A%20%20UNION%0A%20%20%7B%20%3Fstatement%20pq%3AP19%20%3Fpressure%20.%20%3Fpressure%20p%3AP6%20%2F%20pq%3AP22%20%3Fchemical%20.%20%7D%0A%20%20%3Fchemical%20wdt%3AP1%20wd%3AQ68%20.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%20GROUP%20BY%20%3Fchemical%20%3FchemicalLabel%0A%20%20ORDER%20BY%20DESC%28%3Fcount%29%0A))
 
