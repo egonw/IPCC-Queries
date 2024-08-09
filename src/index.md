@@ -22,3 +22,5 @@ and the data presented in this book is collected by the editors of this Wikibase
 
 * Egon Willighagen
 * Lars Willighagen
+
+Thanks to Daniel Mietchen for proofreading.
